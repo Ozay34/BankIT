@@ -28,6 +28,8 @@ export function AnalyzeSettings() {
     const setPeriod = useAnalyzeData((state) => state.setPeriod)
     const periodStart = useAnalyzeData((state) => state.periodStart)
     const setPeriodStart = useAnalyzeData((state) => state.setPeriodStart)
+    const isLoaded = useImportedData((state) => state.isLoaded());
+    if(!isLoaded) return <></>
 
     const periods = Object.values(Periods).map((period) => period.display)
     const firstDate = extractedData[0].date

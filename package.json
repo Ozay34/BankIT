@@ -1,8 +1,9 @@
 {
   "name": "bank-it",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
+  "homepage": "https://ozay34.github.io/BankIT/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

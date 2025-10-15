@@ -11,8 +11,10 @@ export const useExtractedData = () => {
     const incomeColumn = useImportedData((state) => state.incomeColumn);
     const dateFormat = useImportedData((state) => state.dateFormat);
     const negativeExpenses = useImportedData((state) => state.negativeExpenses);
+    const isLoaded = useImportedData((state) => state.isLoaded());
 
     const data = useParsedData((state) => state.data);
+    if(!isLoaded) return [];
     const failedRows = data.errors.map((error) => error.row)
     const parsedData = data.data
 
