@@ -1,13 +1,15 @@
 import {useImportedData, useParsedData} from "../../data/ImportedData.js";
 import {
+    Anchor,
     Group,
     Input, NumberInput,
     ScrollArea, Select,
     Stack,
     Switch,
     Table,
-    TextInput, UnstyledButton
+    TextInput, ThemeIcon
 } from "@mantine/core";
+import {IconInfoSquareRounded} from "@tabler/icons-react";
 
 const CSVExtractor = {
     Settings(){
@@ -51,7 +53,12 @@ const CSVExtractor = {
                         <Select label="Date Column" data={columns} value={columns[dateColumn]} onChange={setColumnByName(setDateColumn)} /> :
                         <NumberInput label="Date Column" min={1} max={columns} value={dateColumn+1} onChange={(v) => setDateColumn(v-1)} />
                     }
-                    <TextInput label={<UnstyledButton>Test</UnstyledButton>} placeholder="auto" value={dateFormat} onChange={(e) => setDateFormat(e.currentTarget.value)} />
+                    <TextInput label={<>
+                        Date Format
+                        <Anchor href="https://day.js.org/docs/en/parse/string-format" target="_blank">
+                            <ThemeIcon variant="transparent" size="xs" color="blue"><IconInfoSquareRounded /></ThemeIcon>
+                        </Anchor>
+                    </>} placeholder="auto" value={dateFormat} onChange={(e) => setDateFormat(e.currentTarget.value)} />
                 </Group>
                 <Group grow>
                     {header ?
