@@ -1,7 +1,6 @@
 import {
     Accordion,
     Box,
-    Button, Center,
     Divider,
     Grid,
     Group,
@@ -18,7 +17,6 @@ import {useCategoryData} from "../data/CategoryData.js";
 import {DateInput} from "@mantine/dates";
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
-import {IconTrash, IconUpload} from "@tabler/icons-react";
 dayjs.extend(isBetween)
 
 export function AnalyzeSettings() {
@@ -67,7 +65,7 @@ export default function AnalyzeView() {
             case Periods.Monthly.display:
                 return {start: firstDate.startOf("month"), end: firstDate.startOf("month").add(1, "month")}
             case Periods.BiWeekly.display:
-                if(firstDate.isSame(periodStart, "day"))
+                if(!periodStart.isValid() || firstDate.isSame(periodStart, "day"))
                     return {start: firstDate, end: firstDate.add(periodDuration)}
                 else return {start: firstDate, end: periodStart}
         }
